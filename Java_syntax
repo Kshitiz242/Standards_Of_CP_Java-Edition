@@ -1,0 +1,2 @@
+//Syntax to declare a hashmap in Java
+HashMap<K,V> Map = new HashMap<>();  //K->denotes key type  V->denotes value type

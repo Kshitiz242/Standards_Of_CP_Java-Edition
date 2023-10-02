@@ -1,8 +1,11 @@
+NOTE: THE WORDS SEPARATED BY THIS SYMBOL (->) ARE HEADINGS. KNOWING THIS WILL HELP TO NAVIGATE BETWEEN DIFFERENT TOPICS WITH A BIT MORE EASE.
+
 //Syntax to declare a hashmap in Java
 HashMap<K,V> Map = new HashMap<>();  //K->denotes key type  V->denotes value type
 
 //Collection classes in Java
-Iterable Interface
+
+Iterable Interface->
 The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also 
 implement the Iterable interface.
 
@@ -12,7 +15,7 @@ Iterator<T> iterator()
 It returns the iterator over the elements of type T.
 
 
-//List Interface
+List Interface->
 List interface is the child interface of Collection interface. It inhibits a list type data structure in which we can store the ordered collection of objects. It can have duplicate values.
 
 List interface is implemented by the classes ArrayList, LinkedList, Vector, and Stack.
@@ -26,6 +29,9 @@ Iterator itr=list.iterator();
 while(itr.hasNext()){  
 System.out.println(itr.next());  
 }  
+
+Vectors in Java->
+Vector uses a dynamic array to store the data elements. It is similar to ArrayList. However, It is synchronized and contains many methods that are not the part of Collection framework.
 
 
 

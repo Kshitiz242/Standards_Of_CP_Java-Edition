@@ -2,6 +2,8 @@ NOTE: THE WORDS SEPARATED BY THIS SYMBOL (->) ARE HEADINGS. KNOWING THIS WILL HE
 
 //Syntax to declare a hashmap in Java
 HashMap<K,V> Map = new HashMap<>();  //K->denotes key type  V->denotes value type
+HashMap method-> 
+V getOrDefault(Object key, V defaultValue)
 
 //Collection classes in Java
 

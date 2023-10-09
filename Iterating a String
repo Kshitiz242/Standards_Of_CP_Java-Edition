@@ -1,0 +1,14 @@
+M1:
+String text = "Hello";
+char[] charArray = text.toCharArray();
+
+for (char ch : charArray) {
+    System.out.println(ch);
+}
+M2:
+String text = "World";
+
+for (char ch : text.toCharArray()) {
+    System.out.println(ch);
+}
+

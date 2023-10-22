@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class TwoDListExample {
+    public static void main(String[] args) {
+        List<List<String>> twoDList = new ArrayList<>();
+
+        List<String> innerList1 = new ArrayList<>();
+        innerList1.add("Element 1");
+        innerList1.add("Element 2");
+
+        twoDList.add(innerList1);
+
+        List<String> innerList2 = new ArrayList<>();
+        innerList2.add("Element A");
+        innerList2.add("Element B");
+
+        twoDList.add(innerList2);
+
+        // Printing the 2D list
+        for (List<String> innerList : twoDList) {
+            for (String element : innerList) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+Algorithm to achieve this->
+1)Initialize your 2D list:
+List<List<String>> twoDList = new ArrayList<>();
+2)Create a new inner list (a list of strings) and add elements to it:
+List<String> innerList1 = new ArrayList<>();
+innerList1.add("Element 1");
+innerList1.add("Element 2");
+3)Add the inner list to the 2D list:
+twoDList.add(innerList1);
+4)Repeat steps 2 and 3 for additional inner lists:
+List<String> innerList2 = new ArrayList<>();
+innerList2.add("Element A");
+innerList2.add("Element B");
+twoDList.add(innerList2);

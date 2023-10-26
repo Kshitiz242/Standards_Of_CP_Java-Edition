@@ -79,3 +79,43 @@ class Solution {
         }
     }
 
+Approach optimized by chatGPT->
+import java.util.*;
+
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        // Step 1: Count the frequency of each number
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        // Step 2: Create a list of ArrayLists for the buckets
+        ArrayList<Integer>[] bucket = new ArrayList[nums.length + 1];
+        for (int i = 0; i < bucket.length; i++) {
+            bucket[i] = new ArrayList<>();
+        }
+
+        // Step 3: Add numbers to their corresponding buckets
+        for (int num : map.keySet()) {
+            int frequency = map.get(num);
+            bucket[frequency].add(num);
+        }
+
+        // Step 4: Collect the top k frequent elements
+        List<Integer> result = new ArrayList<>();
+        for (int i = bucket.length - 1; i >= 0 && result.size() < k; i--) {
+            result.addAll(bucket[i]);
+        }
+
+        // Step 5: Convert the List to an array
+        int[] arr = new int[k];
+        for (int i = 0; i < k; i++) {
+            arr[i] = result.get(i);
+        }
+
+        return arr;
+    }
+}
+
+

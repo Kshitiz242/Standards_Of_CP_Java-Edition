@@ -37,3 +37,45 @@ class Solution {
         }
         
     }
+
+Accepted solution(Using Bucket_sort)->
+import java.util.*;
+class Solution {
+   public int[] topKFrequent(int[] nums, int k) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int count=0;
+        for(int i:nums){
+            count=map.getOrDefault(i,0);
+            map.put(i,count+=1);
+        } 
+        ArrayList<Integer>[] bucket= new ArrayList[nums.length+1];
+        ArrayList<Integer> inner= new ArrayList<>();
+        int index;
+        for(int i=0;i<=nums.length;i++){
+            bucket[i]=new ArrayList<>();
+        }        
+        for(int key:map.keySet()){
+            index=map.get(key);
+            inner=bucket[index];
+            inner.add(key);
+            bucket[index]=inner;
+        }
+        int[] arr=new int[k];
+        int n=0; // To add elements to the resultant array
+        for(int j=bucket.length-1;j>=0;j--){
+            if(n==k){
+                break;
+            }
+            inner=bucket[j];
+            for(int m:inner){
+                arr[n]=m;
+                n++;
+                if(n==k){
+                    break;
+                }
+            }
+        }
+        return arr;
+        }
+    }
+

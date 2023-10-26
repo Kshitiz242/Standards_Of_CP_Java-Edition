@@ -1,0 +1,39 @@
+//Got TLE message on this solution,need to test whether this solution is correct or not.
+import java.util.*;
+class Solution {
+    public void Insert(Map.Entry<Integer,Integer> data,ArrayList<Map.Entry<Integer,Integer>> heap){
+        heap.add(data);
+        int index=heap.size()-1;
+        while(index>0){
+            int parent=(index-1)/2;
+            if(heap.get(index).getValue()<heap.get(parent).getValue()){
+                break;
+            }
+            Map.Entry<Integer,Integer> temp;
+            temp=heap.get(parent);
+            heap.set(parent,heap.get(index));
+            heap.set(index,temp);
+            index=parent;   
+            }
+    }
+
+    public int[] topKFrequent(int[] nums, int k) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int[] arr=new int[k];
+        int n=0;
+        int count=0;
+        for(int i:nums){
+            count=map.getOrDefault(i,0);
+            map.put(i,count+=1);
+        } 
+        ArrayList<Map.Entry<Integer,Integer>> heap= new ArrayList<>();
+        for(Map.Entry<Integer,Integer> entry:map.entrySet()){
+            Insert(entry,heap);
+        }
+        while(n<k){
+            arr[n]=heap.get(n).getKey();
+        }
+        return arr;
+        }
+        
+    }

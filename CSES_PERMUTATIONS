@@ -1,0 +1,35 @@
+//METHOD-1:USING ARRAYLISTS (This method gave TLE for larger values of n)
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       ArrayList<Integer> list= new ArrayList<>();
+       int n=scanner.nextInt();
+       if (n==1) {
+        System.out.print(1);
+        return;
+       }
+       if (n>1 && n<=3) {
+         System.out.println("NO SOLUTION");
+         return;
+       }
+       list.add(1);
+       list.add(n);
+       for(int i=2;i<n;i++){
+         if (i%2==0) {
+            list.add(i);
+         }
+         else{
+            list.add(0,i);
+         }
+       }
+       for(int i:list){
+        System.out.print(i);
+        System.out.print(" ");
+       }
+       scanner.close();
+    
+    }
+}
+

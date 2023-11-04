@@ -34,4 +34,34 @@ public class Solution {
 }
 //METHOD-2 OF SOLVING THE PROBLEM WAS USING A STRINGBUILDER/STRINGBUFFER (THIS APPROACH ALSO GAVE TLE ON THE TEST CASES WHERE THE INPUT SIZE WAS LARGER) 
 MAKES NO SENSE SINCE BOTH APPROACHES SOLVE THE PROBLEM IN O(n) TIME,I DON'T THINK I CAN OPTIMIZE THE SOLUTION ANY FURTHER.
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       int n=scanner.nextInt();
+       if (n==1) {
+        System.out.print(1);
+        return;
+       }
+       if (n>1 && n<=3) {
+         System.out.println("NO SOLUTION");
+         return;
+       }
+       StringBuffer sBuffer=new StringBuffer(Integer.toString(1));
+       sBuffer.append(" "+Integer.toString(n));
+       for(int i=2;i<n;i++){
+         if (i%2==0) {
+            sBuffer.append(" "+Integer.toString(i));
+         }
+         else{
+            sBuffer.insert(0, Integer.toString(i)+" ");
+         }
+       }
+       System.out.println(sBuffer);
+
+       scanner.close();
+    
+    }
+}
 

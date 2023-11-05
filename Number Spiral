@@ -1,0 +1,76 @@
+M-1:  REALLY BAD AND SLOW APPROACH(GIVES TLE)
+import java.util.*;
+
+public class Solution {
+   public static int min(int u,int v){
+   if(u>v){
+      return v;
+   }
+   else{
+      return u;
+   }
+   }
+
+     public static int diagonalEntry(int a,int b){
+         int entry=1;
+         int adder=2;
+         for(int j=2;j<=b;j++){
+               entry=entry+adder;
+               adder=adder+2;
+         }
+         return entry;
+      }
+   public static void main(String[] args) {
+      Scanner scanner = new Scanner(System.in);
+      int t=scanner.nextInt();
+      for(int i=0;i<t;i++){
+         int element;
+         int y=scanner.nextInt();
+         int x=scanner.nextInt();
+         int a,b;    //a is the row pointer and b is the column pointer
+         a=b=min(y, x);
+         element=diagonalEntry(a, b);
+         while (a!=y || b!=x) {
+            //For going right and down
+            if (a==1 && b%2==1) {  //1 step right
+               b++;
+               element++;
+            }
+            else if(a==1 && b%2==0){  //As far down as possible
+               while (a!=y && a!=b ) {
+                  a++;
+                  element++;
+               }
+            }
+            else if (b==1 && a%2==1) { //As far right as possible
+               while (b!=x && b!=a+1) {
+                  b++;
+                  element++;
+               }
+            }
+            else if (b==1 && a%2==0) {  //1 step down
+               a++;
+               element++;
+            }
+            //For going left and up
+            else if(a==b && a%2==0){ //as far left as possible
+               while (b!=1 && b!=x) {
+                  b--;
+                  element++;
+               }
+            }
+            else if (a==b && a%2==1) { //as far up as possible
+               while (a!=y && a!=1) {
+                  a--;
+                  element++;
+               }
+            }
+         }
+         System.out.println(element);
+         }
+         scanner.close();
+      }
+      
+   }
+
+

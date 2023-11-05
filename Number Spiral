@@ -1,4 +1,4 @@
-M-1:  REALLY BAD AND SLOW APPROACH(GIVES TLE)
+M-1:  REALLY BAD AND SLOW APPROACH(GIVES TLE) and doesn't work for input (4,2) and higher
 import java.util.*;
 
 public class Solution {
@@ -72,5 +72,69 @@ public class Solution {
       }
       
    }
+
+METHOD-2:THIS APPROACH IS LOGICALLY SOUND BUT GIVES TLE FOR A TIME LIMIT OF 1 SECOND DUE TO THE diagonalEntry function having a calculation intesive for loop (Much better than the 1st one)
+
+import java.util.*;
+
+public class Solution {
+   public static int max(int u,int v){
+   if(u>v){
+      return u;
+   }
+   else{
+      return v;
+   }
+   }
+
+     public static int diagonalEntry(int a,int b){
+         int entry=1;
+         int adder=2;
+         for(int j=2;j<=b;j++){
+               entry=entry+adder;
+               adder=adder+2;
+         }
+         return entry;
+      }
+   public static void main(String[] args) {
+      Scanner scanner = new Scanner(System.in);
+      int t=scanner.nextInt();
+      for(int i=0;i<t;i++){
+         int element;
+         int y=scanner.nextInt();
+         int x=scanner.nextInt();
+         int a;
+         int b;
+         a=b=max(y, x);
+         element=diagonalEntry(a, b);
+         if (x==y) {
+            System.out.println(element);
+         }
+         else if(x!=y){
+            if (b==x) { //Implies a=b=x and x>y => a>y that means you must go up 
+                if (b%2==0) { //Implies that element decreases on going up from here
+                    element=element-(a-y);
+                }
+                else if (b%2==1) {  //element increases on going up from here
+                    element=element+(a-y);
+                }
+            }
+            else if (b!=x) { //Implies a=b=y and y>x => b>x i.e. you must go left 
+                if (b%2==0) { //Element increases on going left from here 
+                    element=element+(b-x);
+                }
+                else if (b%2==1) { //Element decreases if you left from here
+                    element=element-(b-x);
+                }
+            }
+            System.out.println(element);
+        }
+        }
+         scanner.close();
+      }
+      
+   }
+
+
 
 

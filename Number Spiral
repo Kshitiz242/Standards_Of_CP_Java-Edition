@@ -136,5 +136,12 @@ public class Solution {
    }
 
 
+There's a more effficient way to calculate the diagonal entry in the code written above but it still shows WA due to TLE for some reason
+(despite making this optimization):
 
+     public static int diagonalEntry(int a,int b){  //I can get away with giving only 1 argument here since the coordinates are equal at diagonals 
+        //but it makes no difference on the execution speed of the code here
+         int entry=(a*a) - (a-1);
+         return entry;
+      }
 

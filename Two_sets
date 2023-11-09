@@ -1,59 +1,5 @@
-This is my original code//
-public class Solution {
-   
-   public static void main(String[] args) {
-      Scanner scanner = new Scanner(System.in);
-      int n=scanner.nextInt();
-      ArrayList<Integer> L1=new ArrayList<>();
-      ArrayList<Integer> L2=new ArrayList<>();
-      int s1=n*(n+1)/2;
-      if (s1%2==1) {
-         System.out.println("NO");
-      }
-      else{
-         System.out.println("YES");
-         int target=s1/2;
-         int last_sub=0;
-         for(int i=n;i>=1;i--){
-            if (target>i){
-               target=target-i;
-               L1.add(i);
-               last_sub=i;
-            }
-            else{
-               L1.add(target);
-               break;
-            }
-         }
-         for(int j=1;j<last_sub;j++){
-            if (j==target) {
-               continue;
-            }
-            else{
-               L2.add(j);
-            }
-         }
-      System.out.println(L1.size());
-      for(int i:L1){
-         System.out.print(i);
-         System.out.print(" ");
-      }
-      System.out.println();
-      System.out.println(L2.size());
-      for(int i:L2){
-         System.out.print(i);
-         System.out.print(" ");
-      }
-      }
-      
+This solution is logically correct but it gives TLE for 2 test cases out of 23
 
-
-      scanner.close();
-      }
-      
-   }
-
-THIS IS THE CODE WITH SLIGHT CORRECTIONS MADE BY chatGPT
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -61,42 +7,49 @@ public class Solution {
    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        ArrayList<Integer> L1 = new ArrayList<>();
-        ArrayList<Integer> L2 = new ArrayList<>();
-        int s1 = n * (n + 1) / 2;
-
-        if (s1 % 2 == 1) {
+        long n = scanner.nextInt();
+        ArrayList<Long> L1 = new ArrayList<>();
+        ArrayList<Long> L2 = new ArrayList<>();
+        long s1 = n * (n + 1) / 2;
+        long temp=-1;
+        if (s1 % 2 != 0) {
             System.out.println("NO");
-        } else {
+        } 
+        else {
             System.out.println("YES");
-            int target = s1 / 2;
-
-            // Use an array to keep track of whether each number has been used
-            boolean[] used = new boolean[n + 1];
-
-            for (int i = n; i >= 1; i--) {
-                if (target >= i && !used[i]) {
-                    L1.add(i);
-                    used[i] = true;
-                    target -= i;
-                } else {
-                    L2.add(i);
-                }
+            long target = s1 / 2;
+            long i=n;
+            while(target!=0){
+               if (target>=i) {
+                  target=target-i;
+                  L1.add(i);
+                  i--;
+               }
+               else{
+                  temp=target;  //New value of the variable target
+                  target=target-temp;
+                  L1.add(temp);
+               }
+         }
+         for(long j=1;j<=i;j++){
+            if (j==temp) {
+               continue;
             }
-
-            System.out.println(L1.size());
-            for (int i : L1) {
-                System.out.print(i + " ");
+            else{
+               L2.add(j);
             }
-            System.out.println();
-
-            System.out.println(L2.size());
-            for (int i : L2) {
-                System.out.print(i + " ");
-            }
-        }
-
-        scanner.close();
+         }
+         System.out.println(L1.size());
+         for(long j:L1){
+            System.out.print(j+" ");
+         }
+         System.out.println();
+         System.out.println(L2.size());
+         for(long j:L2){
+            System.out.print(j+" ");
+         }
+         scanner.close();
+    }
     }
 }
+
